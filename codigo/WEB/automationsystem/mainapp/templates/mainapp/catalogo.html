@@ -1,0 +1,28 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Catálogo{% endblock %}
+
+{% block content %}
+<h1>Catálogo</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Versión</th>
+        <th>Autor</th>
+        <th>Fecha de Creación</th>
+        <th>Fecha de Modificación</th>
+    </tr>
+    {% for catalogo in catalogos %}
+    <tr>
+        <td><a href="{% url 'detalle_automatizacion' catalogo.id %}">{{ catalogo.nombre }}</a></td>
+        <td>{{ catalogo.descripcion }}</td>
+        <td>{{ catalogo.version }}</td>
+        <td>{{ catalogo.autor.username }}</td>
+        <td>{{ catalogo.fecha_creacion }}</td>
+        <td>{{ catalogo.fecha_modificacion }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'crear_automatizacion' %}">Nueva automatizacion</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+    <h1>Ambientes</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>
+        {% for ambiente in ambientes %}
+        <tr>
+            <td><a href="{% url 'detalle_ambiente' ambiente.id %}">{{ ambiente.nombre_ambiente }}</a></td>
+            <td>{{ ambiente.descripcion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'nuevo_ambiente' %}">Nuevo Ambiente</a>
+
+{% endblock %}

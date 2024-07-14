@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+
+    <h1>Usuarios</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Roles</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td><a href="{% url 'detalle_usuario' usuario.id %}">{{ usuario.username }}</a></td>
+            <td>{{ usuario.email }}</td>
+            <td>
+                {% for role in usuario.groups.all %}
+                    {{ role.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'nuevo_usuario' %}">Nuevo Usuario</a>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Nuevo Usuario{% endblock %}
+
+{% block content %}
+<h1>Nuevo Usuario</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear Usuario</button>
+</form>
+{% endblock %}

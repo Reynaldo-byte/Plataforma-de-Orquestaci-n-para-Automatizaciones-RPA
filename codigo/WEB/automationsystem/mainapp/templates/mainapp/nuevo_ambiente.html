@@ -1,0 +1,15 @@
+
+
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Detalle de Usuario{% endblock %}
+
+{% block content %}<!DOCTYPE html>
+
+    <h1>Nuevo Ambiente</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Ambiente</button>
+    </form>
+{% endblock %}

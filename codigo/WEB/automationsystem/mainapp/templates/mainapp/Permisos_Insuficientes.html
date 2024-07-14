@@ -1,0 +1,9 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Permisos Insuficientes{% endblock %}
+
+{% block content %}
+<h1>Permisos Insuficientes</h1>
+<p>No tienes permiso para realizar esta acción.</p>
+<a href="{% url 'usuarios' %}">Volver a la lista de usuarios</a>
+{% endblock %}

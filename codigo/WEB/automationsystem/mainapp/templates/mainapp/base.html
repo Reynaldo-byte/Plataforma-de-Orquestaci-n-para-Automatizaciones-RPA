@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>{% block title %}Sistema de Automatización{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Automatización</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'dispositivos' %}">Dispositivos</a></li>
+                        <li><a href="{% url 'historial_ejecuciones' %}">Historial de Ejecuciones</a></li>
+        <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+        <li><a href="{% url 'calendario_ejecucion' %}">Calendario de Ejecución</a></li>
+        <li><a href="{% url 'ambientes' %}">Ambientes</a></li>
+        <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
+
+{% if user.is_authenticated %}
+                    <li>
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background: none; border: none; color: blue; cursor: pointer; text-decoration: underline; padding: 0;">
+                                Cerrar Sesión
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('historial_ejecuciones/', views.historial_ejecuciones, name='historial_ejecuciones'),
+    path('metricas/<int:ejecucion_id>/', views.metricas, name='metricas'),
+    path('catalogo/', views.catalogo, name='catalogo'),
+    path('detalle_automatizacion/<int:automatizacion_id>/', views.detalle_automatizacion, name='detalle_automatizacion'),
+    path('modificar_automatizacion/<int:automatizacion_id>/', views.modificar_automatizacion, name='modificar_automatizacion'),
+    path('eliminar_automatizacion/<int:automatizacion_id>/', views.eliminar_automatizacion, name='eliminar_automatizacion'),
+    path('calendario_ejecucion/', views.calendario_ejecucion, name='calendario_ejecucion'),
+    path('nueva_ejecucion/', views.nueva_ejecucion, name='nueva_ejecucion'),
+    path('detalle_ejecucion/<int:calendario_id>/', views.detalle_ejecucion, name='detalle_ejecucion'),
+    path('modificar_ejecucion/<int:calendario_id>/', views.modificar_ejecucion, name='modificar_ejecucion'),
+    path('eliminar_ejecucion/<int:calendario_id>/', views.eliminar_ejecucion, name='eliminar_ejecucion'),
+    path('ambientes/', views.ambientes, name='ambientes'),
+    path('nuevo_ambiente/', views.nuevo_ambiente, name='nuevo_ambiente'),
+    path('detalle_ambiente/<int:ambiente_id>/', views.detalle_ambiente, name='detalle_ambiente'),
+    path('modificar_ambiente/<int:ambiente_id>/', views.modificar_ambiente, name='modificar_ambiente'),
+    path('eliminar_ambiente/<int:ambiente_id>/', views.eliminar_ambiente, name='eliminar_ambiente'),
+    path('dispositivos/', views.dispositivos, name='dispositivos'),
+    path('nuevo_dispositivo/', views.nuevo_dispositivo, name='nuevo_dispositivo'),
+    path('detalle_dispositivo/<int:dispositivo_id>/', views.detalle_dispositivo, name='detalle_dispositivo'),
+    path('modificar_dispositivo/<int:dispositivo_id>/', views.modificar_dispositivo, name='modificar_dispositivo'),
+    path('eliminar_dispositivo/<int:dispositivo_id>/', views.eliminar_dispositivo, name='eliminar_dispositivo'),
+    path('usuarios/', views.usuarios, name='usuarios'),
+    path('nuevo_usuario/', views.nuevo_usuario, name='nuevo_usuario'),
+    path('detalle_usuario/<int:usuario_id>/', views.detalle_usuario, name='detalle_usuario'),
+    path('modificar_usuario/<int:usuario_id>/', views.modificar_usuario, name='modificar_usuario'),
+    path('eliminar_usuario/<int:usuario_id>/', views.eliminar_usuario, name='eliminar_usuario'),
+    path('crear_automatizacion/', views.crear_automatizacion, name='crear_automatizacion'),
+    path('verificar_permisos/', views.verificar_permisos, name='verificar_permisos'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('exportar_metricas/<int:ejecucion_id>/', views.exportar_metricas, name='exportar_metricas'),
+]
+

@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Detalle Dispositivo{% endblock %}
+
+{% block content %}
+<h1>Detalle Dispositivo</h1>
+<p>Nombre: {{ dispositivo.nombre }}</p>
+<p>Estado: {{ dispositivo.estado }}</p>
+<p>Memoria RAM: {{ dispositivo.memoria_ram.capacidad }}</p>
+<p>SSD: {{ dispositivo.ssd.capacidad }}</p>
+<p>Resolución: {{ dispositivo.resolucion.descripcion }}</p>
+<p>Sistema Operativo: {{ dispositivo.so.nombre }}</p>
+<a href="{% url 'modificar_dispositivo' dispositivo.id %}">Modificar</a>
+<form action="{% url 'eliminar_dispositivo' dispositivo.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+{% endblock %}

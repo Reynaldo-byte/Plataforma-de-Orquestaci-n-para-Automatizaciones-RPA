@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Confirmar Eliminación de Usuario{% endblock %}
+
+{% block content %}
+<h1>¿Estás seguro de que deseas eliminar este usuario?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="javascript:history.back()">Cancelar</a>
+</form>
+{% endblock %}

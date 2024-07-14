@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+    <h1>Detalle Automatización</h1>
+    <p>Nombre: {{ automatizacion.nombre }}</p>
+    <p>Descripción: {{ automatizacion.descripcion }}</p>
+    <p>Versión: {{ automatizacion.version }}</p>
+    <p>Autor: {{ automatizacion.autor.username }}</p>
+    <p>Fecha de Creación: {{ automatizacion.fecha_creacion }}</p>
+    <p>Fecha de Modificación: {{ automatizacion.fecha_modificacion }}</p>
+    <a href="{% url 'modificar_automatizacion' automatizacion.id %}">Modificar</a>
+    <form action="{% url 'eliminar_automatizacion' automatizacion.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+
+{% endblock %}

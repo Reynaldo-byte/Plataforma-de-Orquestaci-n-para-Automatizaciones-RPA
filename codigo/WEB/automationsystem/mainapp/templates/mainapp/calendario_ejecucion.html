@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+    <h1>Calendario de Ejecución</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha de Inicio</th>
+        </tr>
+        {% for calendario in calendarios %}
+        <tr>
+            <td><a href="{% url 'detalle_ejecucion' calendario.id %}">{{ calendario.automatizacion.nombre }}</a></td>
+            <td>{{ calendario.fecha_programada }} {{ calendario.hora_programada }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'nueva_ejecucion' %}">Nueva Ejecución</a>
+{% endblock %}

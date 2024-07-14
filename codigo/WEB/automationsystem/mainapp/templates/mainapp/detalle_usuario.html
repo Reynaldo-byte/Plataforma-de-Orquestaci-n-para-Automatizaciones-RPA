@@ -1,0 +1,22 @@
+
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Detalle de Usuario{% endblock %}
+
+{% block content %}
+<h1>Detalle de Usuario</h1>
+<p>Nombre de Usuario: {{ usuario.username }}</p>
+<p>Email: {{ usuario.email }}</p>
+<p>Roles: 
+    {% for group in usuario.groups.all %}
+        {{ group.name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+
+<form action="{% url 'modificar_usuario' usuario.id %}">{% csrf_token %}
+        <button type="submit">Modificar</button></form>
+    <form action="{% url 'eliminar_usuario' usuario.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    {% endblock %}

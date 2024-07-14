@@ -1,0 +1,27 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+  <h1>Detalles de Métricas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha de Registro</th>
+        <th>Hora de Registro</th>
+        <th>Nombre de Métrica</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for detalle in detalles_metricas %}
+        <tr>
+          <td>{{ detalle.metrica.FechaRegistro }}</td>
+          <td>{{ detalle.metrica.HoraRegistro }}</td>
+          <td>{{ detalle.nombre }}</td>
+          <td>{{ detalle.metrica.valor }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+   <form method="GET" action="{% url 'exportar_metricas' ejecucion_id %}">
+    <button type="submit">Exportar Métricas</button>
+  </form>
+{% endblock %}

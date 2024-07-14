@@ -1,0 +1,27 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+  <h1>Historial de Ejecuciones</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Finalización</th>
+        <th>Estado</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ejecucion in ejecuciones %}
+        <tr>
+          <td>{{ ejecucion.nombre }}</td>
+          <td>{{ ejecucion.timestamp_inicio }}</td>
+          <td>{{ ejecucion.timestamp_fin }}</td>
+          <td>{{ ejecucion.estado }}</td>
+          <td><a href="{% url 'metricas' ejecucion.id %}">Ver Detalles</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

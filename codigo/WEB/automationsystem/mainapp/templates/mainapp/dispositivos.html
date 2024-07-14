@@ -1,0 +1,28 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Dispositivos{% endblock %}
+
+{% block content %}
+<h1>Dispositivos</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    {% for dispositivo in dispositivos %}
+    <tr>
+        <td><a href="{% url 'detalle_dispositivo' dispositivo.id %}">{{ dispositivo.nombre }}</a></td>
+        <td>{{ dispositivo.estado }}</td>
+        <td>
+            <a href="{% url 'modificar_dispositivo' dispositivo.id %}">Modificar</a> |
+            <form action="{% url 'eliminar_dispositivo' dispositivo.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'nuevo_dispositivo' %}">Nuevo Dispositivo</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+
+  <form method="GET" action="{% url 'dashboard' %}">
+    <label for="dispositivo">Seleccione Dispositivo:</label>
+    <select name="dispositivo" id="dispositivo">
+      <option value="">Todos</option>
+      {% for dispositivo in dispositivos %}
+        <option value="{{ dispositivo.id }}" {% if dispositivo.id|stringformat:"s" == selected_dispositivo|stringformat:"s" %}selected{% endif %}>{{ dispositivo.nombre }}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="automatizacion">Seleccione Automatización:</label>
+    <select name="automatizacion" id="automatizacion">
+      <option value="">Todas</option>
+      {% for automatizacion in automatizaciones %}
+        <option value="{{ automatizacion.id }}" {% if automatizacion.id|stringformat:"s" == selected_automatizacion|stringformat:"s" %}selected{% endif %}>{{ automatizacion.nombre }}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="fecha_inicio">Fecha de Inicio:</label>
+    <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ selected_fecha_inicio }}">
+    
+    <label for="fecha_fin">Fecha de Fin:</label>
+    <input type="date" id="fecha_fin" name="fecha_fin" value="{{ selected_fecha_fin }}">
+    
+    <button type="submit">Filtrar</button>
+  </form>
+
+  <h2>Número de Ejecuciones por Dispositivo ({{ dispositivo_nombre }})</h2>
+  <img src="data:image/png;base64,{{ grafico_barras }}" alt="Gráfico de Barras">
+
+  <h2>Duración de Ejecuciones por Día ({{ automatizacion_nombre }})</h2>
+  <img src="data:image/png;base64,{{ grafico_linea }}" alt="Gráfico de Línea">
+
+  <h2>Estados de Ejecuciones</h2>
+  <img src="data:image/png;base64,{{ grafico_circular }}" alt="Gráfico Circular">
+
+{% endblock %}
