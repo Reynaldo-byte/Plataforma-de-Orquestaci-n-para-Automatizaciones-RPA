@@ -3,13 +3,17 @@
 {% block title %}Bienvenido al Sistema de Automatización{% endblock %}
 
 {% block content %}
-    <h1>Bienvenido al Sistema de Automatización</h1>
+    
     <ul>
-        <li><a href="{% url 'historial_ejecuciones' %}">Historial de Ejecuciones</a></li>
-        <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+<li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
+<li><a href="{% url 'ambientes' %}">Ambientes</a></li>
+<li><a href="{% url 'dispositivos' %}">Dispositivos</a></li>
+<li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+     
         <li><a href="{% url 'calendario_ejecucion' %}">Calendario de Ejecución</a></li>
-        <li><a href="{% url 'ambientes' %}">Ambientes</a></li>
-        <li><a href="{% url 'dispositivos' %}">Dispositivos</a></li>
+                        <li><a href="{% url 'historial_ejecuciones' %}">Historial de Ejecuciones</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
 
     </ul>
 {% endblock %}

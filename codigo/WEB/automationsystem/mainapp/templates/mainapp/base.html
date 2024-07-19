@@ -2,23 +2,28 @@
 <html>
 <head>
     {% load static %}
-    <title>{% block title %}Sistema de Automatización{% endblock %}</title>
+    <title>{% block title %}Plataforma de Orquestación para Automatizaciones RPA{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>Sistema de Automatización</h1>
+        <h1>Plataforma de Orquestación para Automatizaciones RPA</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                <li><a href="{% url 'dispositivos' %}">Dispositivos</a></li>
-                        <li><a href="{% url 'historial_ejecuciones' %}">Historial de Ejecuciones</a></li>
-        <li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+                <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
+<li><a href="{% url 'ambientes' %}">Ambientes</a></li>
+<li><a href="{% url 'dispositivos' %}">Dispositivos</a></li>
+<li><a href="{% url 'catalogo' %}">Catálogo</a></li>
+     
         <li><a href="{% url 'calendario_ejecucion' %}">Calendario de Ejecución</a></li>
-        <li><a href="{% url 'ambientes' %}">Ambientes</a></li>
-        <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
+                        <li><a href="{% url 'historial_ejecuciones' %}">Historial de Ejecuciones</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                
 
+   
+        
+        
 {% if user.is_authenticated %}
                     <li>
                         <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: inline;">
